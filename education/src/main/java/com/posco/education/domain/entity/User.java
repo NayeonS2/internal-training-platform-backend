@@ -27,16 +27,16 @@ public class User {
 
     @ManyToMany
     @JoinTable(name = "mylecture",
-            joinColumns = @JoinColumn(name = "USER_ID"),
-            inverseJoinColumns = @JoinColumn(name = "LECTURE_ID"))
+            joinColumns = @JoinColumn(name = "USER"),
+            inverseJoinColumns = @JoinColumn(name = "LECTURE"))
     private List<Lecture> lectures = new ArrayList<>();
 
     @OneToMany
-    @JoinColumn(name = "REVIEW_ID")
+    @JoinColumn(name = "USER")
     private List<Review> reviews = new ArrayList<Review>();
 
     @OneToOne
-    @JoinColumn(name = "POINT_ID")
+    @JoinColumn(name = "POINT")
     private Point point;
 
 //    @Enumerated(EnumType.STRING)

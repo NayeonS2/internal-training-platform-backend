@@ -25,7 +25,7 @@ public class Lecture {
     private String video_link;    // 강의 링크
     private Integer like_cnt;     // 강의 찜 수
     @OneToMany
-    @JoinColumn(name = "REVIEW_ID")
+    @JoinColumn(name = "LECTURE")
     private List<Review> reviews = new ArrayList<Review>();
 
 }
