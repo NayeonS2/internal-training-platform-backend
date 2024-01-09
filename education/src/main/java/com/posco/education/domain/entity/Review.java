@@ -16,10 +16,10 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer review_id;     // 아이디
     @ManyToOne
-    @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
+    @JoinColumn(name = "USER", insertable = false, updatable = false)
     private User user;
     @ManyToOne
-    @JoinColumn(name = "lecture_id")
+    @JoinColumn(name = "LECTURE", insertable = false, updatable = false)
     private Lecture lecture;     // 강의
     private String title;    // 리뷰 제목
     @Column(columnDefinition = "text")
