@@ -16,17 +16,14 @@ import java.time.LocalDateTime;
 @Getter
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String user_id;     // 아이디
 
-    private Long id;
+    private String user_pw;     // 비밀번호
+    private String user_name;    // 유저 이름
+    private String department;    // 부서명
+    private Integer quiz_lv;    // 퀴즈 레벨
 
-    private String loginId;     // 로그인할 때 사용하는 아이디
-    private String password;    // 비밀번호
-    private String nickname;    // 닉네임
-    private LocalDateTime createdAt;    // 가입 시간
-    private Integer receivedLikeCnt; // 유저가 받은 좋아요 개수 (본인 제외)
-
-    @Enumerated(EnumType.STRING)
-    private UserRole userRole;      // 권한 등급을 구부
+//    @Enumerated(EnumType.STRING)
+//    private UserRole userRole;      // 권한 등급을 구부
 
 }
