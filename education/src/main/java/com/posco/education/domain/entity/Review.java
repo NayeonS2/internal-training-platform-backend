@@ -16,8 +16,8 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer review_id;     // 아이디
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;     // 유저
+    @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
+    private User user;
     @ManyToOne
     @JoinColumn(name = "lecture_id")
     private Lecture lecture;     // 강의

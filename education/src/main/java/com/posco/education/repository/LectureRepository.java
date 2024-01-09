@@ -14,4 +14,6 @@ public interface LectureRepository extends JpaRepository<Lecture, Integer> {
 
     Optional<Lecture> findByLectureId(Integer lectureId);
 
+    Optional<Lecture> findByTopic(String topic);
+
 }
