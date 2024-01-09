@@ -1,5 +1,6 @@
 package com.posco.education.repository;
 
+import com.posco.education.domain.entity.Lecture;
 import com.posco.education.domain.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -9,8 +10,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, String> {
+public interface LectureRepository extends JpaRepository<Lecture, Integer> {
 
-    Optional<User> findByUserId(String userId);
+    Optional<Lecture> findByLectureId(Integer lectureId);
 
 }
