@@ -7,13 +7,15 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface LectureRepository extends JpaRepository<Lecture, Integer> {
 
-    Optional<Lecture> findByLectureId(Integer lectureId);
 
-    Optional<Lecture> findByTopic(String topic);
+    List<Lecture> findByTopic(String topic);
+    List<Lecture> findByTopicOrderByLikeCntDesc(String topic);
+    List<Lecture> findAllByOrderByLikeCntDesc();
 
 }

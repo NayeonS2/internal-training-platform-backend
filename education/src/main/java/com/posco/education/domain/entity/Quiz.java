@@ -1,16 +1,14 @@
 package com.posco.education.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
+@Setter
 public class Quiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,5 +16,7 @@ public class Quiz {
     private String topic;    // 주제
     private String question;     // 퀴즈 질문
     private String answer;     // 퀴즈 답변
+
+
 
 }

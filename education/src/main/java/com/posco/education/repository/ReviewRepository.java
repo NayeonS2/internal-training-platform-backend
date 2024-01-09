@@ -11,6 +11,6 @@ import java.util.Optional;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
-    Optional<Review> findByReviewId(Integer reviewId);
+//    Optional<Review> findByReviewId(Integer reviewId);
 
 }
