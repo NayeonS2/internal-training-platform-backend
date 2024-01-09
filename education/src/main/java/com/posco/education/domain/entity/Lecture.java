@@ -1,10 +1,8 @@
 package com.posco.education.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +21,18 @@ public class Lecture {
     @Column(columnDefinition = "text")
     private String description;     // 강의 설명
     private String video_link;    // 강의 링크
-    private Integer like_cnt;     // 강의 찜 수
-    @OneToMany
+    @Column(name = "like_cnt")
+    private Integer likeCnt;     // 강의 찜 수
+    @JsonIgnore
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "LECTURE")
     private List<Review> reviews = new ArrayList<Review>();
 
+
+
+
+    public void updateLecture (Integer like_cnt) {
+
+        this.likeCnt = like_cnt;
+    }
 }

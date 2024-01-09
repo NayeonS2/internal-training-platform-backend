@@ -14,6 +14,6 @@ import java.util.Optional;
 @Repository
 public interface PointRepository extends JpaRepository<Point, Integer> {
 
-    Optional<Point> findByPointId(Integer pointId);
+//    Optional<Point> findByPointId(Integer pointId);
 
 }
