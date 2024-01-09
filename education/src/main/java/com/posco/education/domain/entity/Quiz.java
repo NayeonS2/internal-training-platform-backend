@@ -15,9 +15,6 @@ public class Quiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer quiz_id;     // 아이디
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;     // 유저
     private String topic;    // 주제
     private String question;     // 퀴즈 질문
     private String answer;     // 퀴즈 답변
