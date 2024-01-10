@@ -2,7 +2,7 @@ spring:
   # DB 접속 정보 설정
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/eduDB
+    url: jdbc:mysql://localhost:3306/edudb
     username: root
     password: 1234
   # JPA 설정
@@ -10,3 +10,5 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+server:
+  port: 9050
