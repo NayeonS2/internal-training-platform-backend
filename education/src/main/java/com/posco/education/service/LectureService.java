@@ -5,7 +5,7 @@ import com.posco.education.domain.entity.Review;
 import com.posco.education.domain.entity.User;
 import com.posco.education.repository.LectureRepository;
 import com.posco.education.repository.UserRepository;
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -2,7 +2,7 @@ package com.posco.education.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.posco.education.domain.enum_class.UserRole;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
