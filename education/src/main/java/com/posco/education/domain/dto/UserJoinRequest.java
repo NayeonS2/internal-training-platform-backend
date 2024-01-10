@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class UserJoinRequest {
 
-    private String loginId;
+    private String userId;
     private String password;
-    private String passwordCheck;
-    private String nickname;
+    private String username;
+    private String department;
 }

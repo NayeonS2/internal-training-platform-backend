@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserService {
 
+    private final UserRepository userRepository;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final JwtTokenProvider jwtTokenProvider;
 
@@ -40,6 +41,12 @@ public class UserService {
         TokenDto tokenDto = jwtTokenProvider.generateToken(authentication);
 
         return tokenDto;
+    }
+
+    @Transactional
+    public String join(User user) {
+        userRepository.save(user);
+        return user.getUserId();
     }
 
 }
