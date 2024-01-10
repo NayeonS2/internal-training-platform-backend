@@ -21,9 +21,9 @@ import java.util.stream.Collectors;
 @Getter
 public class User implements UserDetails {
     @Id
-    private String user_id;     // 아이디
+    private String userId;     // 아이디
 
-    private String user_pw;     // 비밀번호
+    private String password;     // 비밀번호
     private String user_name;    // 유저 이름
     private String department;    // 부서명
     private Integer quiz_lv;    // 퀴즈 레벨
@@ -64,12 +64,12 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user_id;
+        return userId;
     }
 
     @Override
     public String getPassword() {
-        return user_pw;
+        return password;
     }
 
     @Override
