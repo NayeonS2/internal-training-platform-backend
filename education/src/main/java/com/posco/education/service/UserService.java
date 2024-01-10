@@ -1,7 +1,9 @@
 package com.posco.education.service;
 
 import com.posco.education.domain.dto.TokenDto;
+import com.posco.education.domain.dto.UserLoginResponse;
 import com.posco.education.domain.entity.Lecture;
+import com.posco.education.domain.entity.Point;
 import com.posco.education.domain.entity.User;
 import com.posco.education.jwt.JwtTokenProvider;
 import com.posco.education.repository.LectureRepository;
@@ -13,6 +15,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +32,9 @@ public class UserService {
      * 3. 검증이 정상적으로 통과되었다면 인증된 Authentication객체를 기반으로 JWT 토큰을 생성
      */
     @Transactional
-    public TokenDto login(String memberId, String password) {
+    public UserLoginResponse login(String memberId, String password) {
+        UserLoginResponse loginResponse = new UserLoginResponse();
+
         // 1. Login ID/PW 를 기반으로 Authentication 객체 생성
         // 이때 authentication 는 인증 여부를 확인하는 authenticated 값이 false
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(memberId, password);
@@ -40,7 +46,21 @@ public class UserService {
         // 3. 인증 정보를 기반으로 JWT 토큰 생성
         TokenDto tokenDto = jwtTokenProvider.generateToken(authentication);
 
-        return tokenDto;
+        if (tokenDto != null) {
+            Optional<User> users = userRepository.findByUserId(memberId);
+            if (users.isPresent()) {
+                User user = users.get();
+                Point point = user.getPoint();
+                Integer totalPoint = (point.getFinanceP() + point.getProductionP() + point.getItP() + point.getMarketingP() + point.getLanguageP());
+
+                loginResponse.setTokenDto(tokenDto);
+                loginResponse.setTotalPoint(totalPoint);
+            }
+        } else {
+            System.out.println("null - tokenDto");
+        }
+
+        return loginResponse;
     }
 
     @Transactional

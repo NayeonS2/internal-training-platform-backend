@@ -1,12 +1,11 @@
 package com.posco.education.controller;
 
-import com.posco.education.domain.dto.TokenDto;
-import com.posco.education.domain.dto.UserJoinRequest;
-import com.posco.education.domain.dto.UserLoginRequest;
-import com.posco.education.domain.dto.UserMyLectureRequest;
+import com.posco.education.domain.dto.*;
 import com.posco.education.domain.entity.User;
+import com.posco.education.jwt.JwtTokenProvider;
 import com.posco.education.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -23,11 +22,16 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public TokenDto login(@RequestBody UserLoginRequest userLoginRequest) {
+    public ResponseEntity<?> login(@RequestBody UserLoginRequest userLoginRequest) {
+        ResponseDTO<?> responseDTO = new ResponseDTO<>();
+
         String memberId = userLoginRequest.getLoginId();
         String password = userLoginRequest.getPassword();
-        TokenDto tokenDto = userService.login(memberId, password);
-        return tokenDto;
+
+        UserLoginResponse loginResponse = userService.login(memberId, password);
+        String jwt = loginResponse.getTokenDto().toString();
+
+        return ResponseEntity.ok().header(JwtTokenProvider.HEADER, jwt).body(loginResponse);
     }
 
     @PostMapping("/save")
