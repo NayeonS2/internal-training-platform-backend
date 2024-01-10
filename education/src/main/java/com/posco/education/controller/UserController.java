@@ -1,5 +1,7 @@
 package com.posco.education.controller;
 
+import com.posco.education.domain.dto.TokenDto;
+import com.posco.education.domain.dto.UserLoginRequest;
 import com.posco.education.domain.dto.UserMyLectureRequest;
 import com.posco.education.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,12 @@ public class UserController {
         this.userService = userService;
     }
 
-
+    @PostMapping("/login")
+    public TokenDto login(@RequestBody UserLoginRequest userLoginRequest) {
+        String memberId = userLoginRequest.getLoginId();
+        String password = userLoginRequest.getPassword();
+        TokenDto tokenDto = userService.login(memberId, password);
+        return tokenDto;
+    }
 
 }

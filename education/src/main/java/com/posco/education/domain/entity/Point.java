@@ -1,6 +1,6 @@
 package com.posco.education.domain.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 
 @Entity
