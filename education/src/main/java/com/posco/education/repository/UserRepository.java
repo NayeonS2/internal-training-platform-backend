@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 
-//    Optional<User> findByUserId(String userId);
+    Optional<User> findByUserId(String userId);
 //    Page<User> findAllByNicknameContains(String nickname, PageRequest pageRequest);
 //    Boolean existsByLoginId(String loginId);
 
