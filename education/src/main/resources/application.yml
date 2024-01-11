@@ -13,3 +13,9 @@ spring:
 
 jwt:
   secret: b797d5ca119fb4404679bf5ef3c74bfef1f8a85cc3456d7da876c254b3ab8b5c
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
