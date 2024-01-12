@@ -3,7 +3,10 @@ package com.posco.education.domain.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -29,6 +32,10 @@ public class Review {
     private String content;     // 리뷰 내용
     @Column(name = "like_cnt")
     private Integer likeCnt;     // 리뷰 좋아요 수
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Date createdAt;
 
 
 

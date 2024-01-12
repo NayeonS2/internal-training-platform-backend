@@ -35,7 +35,7 @@ public class ReviewService {
         Lecture lecture = lectureRepository.findById(lectureId)
                 .orElseThrow(() -> new RuntimeException("Lecture not found with ID: " + lectureId));
 
-        Review review = new Review(null, null, null, title, content, 0);
+        Review review = new Review(null, null, null, title, content, 0, null);
 
         reviewRepository.save(review);
 
