@@ -6,7 +6,7 @@ import com.posco.education.domain.entity.Review;
 import com.posco.education.domain.entity.User;
 import com.posco.education.repository.LectureRepository;
 import com.posco.education.repository.UserRepository;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
