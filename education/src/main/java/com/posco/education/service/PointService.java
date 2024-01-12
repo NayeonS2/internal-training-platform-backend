@@ -50,6 +50,24 @@ public class PointService {
 
         Point userPoint = pointByUser(userId);
 
+        if (userPoint.getFinanceP() == null) {
+            userPoint.setFinanceP(0);
+        }
+        if (userPoint.getItP() == null) {
+            userPoint.setItP(0);
+        }
+        if (userPoint.getMarketingP() == null) {
+            userPoint.setMarketingP(0);
+        }
+        if (userPoint.getLanguageP() == null) {
+            userPoint.setLanguageP(0);
+        }
+        if (userPoint.getProductionP() == null) {
+            userPoint.setProductionP(0);
+        }
+
+
+
         Integer finance_p = userPoint.getFinanceP();
         Integer it_p = userPoint.getItP();
         Integer language_p = userPoint.getLanguageP();

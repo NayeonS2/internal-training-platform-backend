@@ -8,6 +8,7 @@ import com.posco.education.service.LectureService;
 import com.posco.education.service.QuizService;
 import com.posco.education.service.ReviewService;
 import com.posco.education.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,7 @@ public class QuizController {
     }
 
     @GetMapping("/{topic}/topic-random-quiz")
+    @Operation(summary = "주제별 랜덤 퀴즈")
     public ResponseEntity<Quiz> randomQuizByTopic(@PathVariable String topic) {
         Quiz randomQuiz = quizService.randomQuizByTopic(topic);
         return new ResponseEntity<>(randomQuiz, HttpStatus.OK);

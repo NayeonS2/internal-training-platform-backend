@@ -15,6 +15,7 @@ public interface LectureRepository extends JpaRepository<Lecture, Integer> {
 
 
     List<Lecture> findByTopic(String topic);
+    Lecture findByLectureId(Integer lectureId);
     List<Lecture> findByTopicOrderByLikeCntDesc(String topic);
     List<Lecture> findAllByOrderByLikeCntDesc();
 
