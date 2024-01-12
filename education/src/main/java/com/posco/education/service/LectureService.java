@@ -108,7 +108,7 @@ public class LectureService {
         requestBody.put("title", title);
 
         // Call Flask API
-        String flaskApiUrl = "http://localhost:5000/recommend";
+        String flaskApiUrl = "http://192.168.0.104:5000/recommend";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
