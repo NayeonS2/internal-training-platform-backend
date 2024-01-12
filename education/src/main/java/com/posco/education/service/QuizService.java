@@ -31,7 +31,7 @@ public class QuizService {
         List<Quiz> quizesByTopic = quizRepository.findByTopic(topic);
 
         if (quizesByTopic.isEmpty()) {
-            return new Quiz();
+            return null;
         }
 
         int randomIndex = new Random().nextInt(quizesByTopic.size());
