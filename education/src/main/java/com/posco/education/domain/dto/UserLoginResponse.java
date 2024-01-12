@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class UserLoginResponse {
     TokenDto tokenDto;
-    Integer totalPoint;
+    Integer quizLv;
 }

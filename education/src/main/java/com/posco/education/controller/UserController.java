@@ -4,6 +4,7 @@ import com.posco.education.domain.dto.*;
 import com.posco.education.domain.entity.User;
 import com.posco.education.jwt.JwtTokenProvider;
 import com.posco.education.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,14 +13,11 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping(path="/user")
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
-
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    private final JwtTokenProvider provider;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserLoginRequest userLoginRequest) {
@@ -49,6 +47,14 @@ public class UserController {
         String userId = userService.join(user);
 
         return userId;
+    }
+
+    @GetMapping("/info")
+    public User userInfo(@RequestHeader("authorization") String accessToken) {
+        System.out.println("accessToken = " + accessToken);
+        String userIdFromToken = provider.getUserIdFromToken(accessToken);
+
+        return userService.getUserInfo(userIdFromToken);
     }
 
     @PostMapping("/test")

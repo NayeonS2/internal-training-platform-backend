@@ -50,17 +50,20 @@ public class UserService {
             Optional<User> users = userRepository.findByUserId(memberId);
             if (users.isPresent()) {
                 User user = users.get();
-                Point point = user.getPoint();
-                Integer totalPoint = (point.getFinanceP() + point.getProductionP() + point.getItP() + point.getMarketingP() + point.getLanguageP());
 
                 loginResponse.setTokenDto(tokenDto);
-                loginResponse.setTotalPoint(totalPoint);
+                loginResponse.setQuizLv(user.getQuiz_lv());
             }
         } else {
             System.out.println("null - tokenDto");
         }
 
         return loginResponse;
+    }
+
+    @Transactional
+    public User getUserInfo(String userId) {
+        return userRepository.findByUserId(userId).get();
     }
 
     @Transactional
